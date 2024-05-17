@@ -75,8 +75,6 @@ class ReviewCreateAPIView(APIView):
             return Response({'success': True}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
 class UserBlogReviewListView(generics.ListAPIView):
     serializer_class = ReviewSerializer
     permission_classes = [IsAuthenticated]
@@ -86,7 +84,6 @@ class UserBlogReviewListView(generics.ListAPIView):
         user = self.request.user
         blog_id = self.kwargs.get('blog_id')
         return Review.objects.filter(user=user, blog_id=blog_id)
-
 
 class BlogDeleteView(generics.DestroyAPIView):
     queryset = Blog.objects.all()
