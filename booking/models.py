@@ -14,11 +14,10 @@ class Booking(models.Model):
     is_one_time = models.BooleanField(null=True, blank=True, default=False)
     is_recurring = models.BooleanField(null=True, blank=True, default=False)
     price = models.IntegerField(null=True , blank=True)
-    hno = models.CharField(max_length=10, null=True, blank=True)
-    apartment_building_name = models.CharField(max_length=20, null=True, blank=True)
-    street = models.CharField(max_length=60, null=True, blank=True)
-    city = models.CharField(max_length=60, null=True, blank=True)
-    landmark = models.CharField(max_length=60, null=True, blank=True)
+    address = models.CharField(max_length=150, null=True, blank=True)
+    district = models.CharField(max_length=20, null=True, blank=True)
+    postal_code = models.CharField(max_length=6, null=True, blank=True)
+    country = models.CharField(max_length=60, null=True, blank=True)
     other_instructions = models.CharField(max_length=60, null=True, blank=True)
 
     def __str__(self):

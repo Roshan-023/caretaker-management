@@ -58,7 +58,7 @@ class VerificationSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Profile
-        fields = ['user', 'display_name', 'user_type',  'organisation_url', 'organisation_name', 'refrence1_name', 'refrence1_phone', 'refrence2_name', 'refrence2_phone', 'status', 'age', 'state', 'pincode', 'gender', 'general_about', 'languages', 'domains']
+        fields = ['user', 'display_name', 'user_type',  'organisation_url', 'organisation_name', 'refrence1_name', 'refrence1_phone', 'refrence2_name', 'refrence2_phone', 'address_proof', 'police_certificate', 'driving_license_proof', 'status', 'age', 'state', 'pincode', 'gender', 'general_about', 'languages', 'domains']
 
     def create(self, validated_data):
         languages_data = validated_data.pop('languages', [])

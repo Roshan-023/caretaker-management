@@ -36,15 +36,16 @@ class PostDetailView(APIView):
         except Post.DoesNotExist:
             return Response({'error': 'Post not found'}, status=404)
 
-class CommentListView(ListAPIView):
-    serializer_class = CommentSerializer
+class CommentListView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        post_id = self.kwargs.get('pk')
+    def get(self, request, pk, *args, **kwargs):
+        post_id = pk
         # Get all comments for the specified post along with their replies
-        return Comment.objects.filter(post_id=post_id).select_related('author').prefetch_related('replies')
-
+        comments = Comment.objects.filter(post_id=post_id).select_related('author').prefetch_related('replies')
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+        
 class CommentCreateAPIView(CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer

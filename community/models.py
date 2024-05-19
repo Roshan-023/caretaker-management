@@ -4,15 +4,11 @@ from django.utils.timezone import now
 User = get_user_model()
 
 class Post(models.Model):
-    class PostType(models.TextChoices):
-        ADVICE = 'Advice'
-        EXPERIENCE = 'Experience'
-        QUESTION = 'Question'
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.TextField(blank=False)
     desc = models.TextField(blank=False)
     published_date = models.DateTimeField(default=now)
-    post_type = models.CharField(null=True, blank=True, choices=PostType.choices, default='Question', max_length=50)
+    
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
     dislikes = models.ManyToManyField(User, related_name='disliked_posts', blank=True)
 

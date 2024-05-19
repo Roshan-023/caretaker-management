@@ -13,7 +13,7 @@ class BookingSerializer(serializers.ModelSerializer):
 class NannyGetBookings(serializers.ModelSerializer):
     class Meta:
         model = Booking
-        fields = ['user', 'domain_name', 'day', 'from_time', 'to_time', 'is_one_time', 'is_recurring', 'price', 'hno', 'apartment_building_name', 'street', 'city', 'landmark', 'other_instructions']
+        fields = ['user', 'domain_name', 'day', 'from_time', 'to_time', 'is_one_time', 'is_recurring', 'price', 'address', 'district', 'postal_code', 'country', 'other_instructions']
 
 
 class PostRatings(serializers.ModelSerializer):
